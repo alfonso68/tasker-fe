@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
 
+// GraphQL Mutation
 const CREATE_TASK = gql`
   mutation CreateTask($input: CreateTaskDto!) {
     createTask(input: $input) {
@@ -12,11 +13,19 @@ const CREATE_TASK = gql`
   }
 `;
 
-const AddTask = () => {
+const AddTask = ({ refetchTasks }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [createTask] = useMutation(CREATE_TASK);
   const [dueDate, setDueDate] = useState('');
+
+  const [createTask] = useMutation(CREATE_TASK, {
+    onCompleted: () => {
+      refetchTasks(); // Refetch tasks after mutation completes
+      setTitle('');
+      setDescription('');
+      setDueDate('');
+    },
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,7 +52,7 @@ const AddTask = () => {
       <input
         type="date"
         value={dueDate}
-        onChange={(e) => setDueDate(e.target.value.toString())}
+        onChange={(e) => setDueDate(e.target.value)}
       />
       <button type="submit">Add Task</button>
     </form>

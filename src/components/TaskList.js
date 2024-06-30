@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, gql } from '@apollo/client';
+import AddTask from './AddTask'; // Import AddTask component
 
 // GraphQL Queries and Mutations
 const GET_TASKS = gql`
@@ -55,7 +56,7 @@ const TaskList = ({ isCompleted }) => {
           id,
           title: editedTask.title,
           description: editedTask.description,
-          dueDate: editedTask.dueDate
+          dueDate: editedTask.dueDate,
         },
       },
     });
@@ -73,6 +74,9 @@ const TaskList = ({ isCompleted }) => {
       variables: {
         input: {
           id: task.id,
+          title: task.title,
+          description: task.description,
+          dueDate: task.dueDate,
           isCompleted: !task.isCompleted,
         },
       },
@@ -86,6 +90,7 @@ const TaskList = ({ isCompleted }) => {
   return (
     <div>
       <h2>Task List</h2>
+      <AddTask refetchTasks={refetch} /> {/* AddTask component with refetchTasks prop */}
       <ul>
         {data.getTasks.map((task) => (
           <li key={task.id}>
@@ -111,13 +116,12 @@ const TaskList = ({ isCompleted }) => {
               </>
             ) : (
               <>
+                <strong>{task.title}</strong>: {task.description} - {task.dueDate} - {task.isCompleted ? 'Completed' : 'Pending'}
+                <button onClick={() => handleEditClick(task)}>Edit</button>
+                <button onClick={() => handleDeleteClick(task.id)}>Delete</button>
                 <button onClick={() => handleStatusToggleClick(task)}>
                   {task.isCompleted ? 'Set Pending' : 'Set Complete'}
                 </button>
-                <button onClick={() => handleEditClick(task)}>Edit</button>
-                <button onClick={() => handleDeleteClick(task.id)}>Delete</button>
-                <strong>{task.title}</strong>: {task.description} -{' '} {task.dueDate}
-                {task.isCompleted ? 'Completed' : 'Pending'}
               </>
             )}
           </li>
