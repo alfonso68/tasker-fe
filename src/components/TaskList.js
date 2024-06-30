@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, gql } from '@apollo/client';
-import AddTask from './AddTask'; // Import AddTask component
+import AddTask from './AddTask';
 
 // GraphQL Queries and Mutations
 const GET_TASKS = gql`
@@ -90,7 +90,7 @@ const TaskList = ({ isCompleted }) => {
   return (
     <div>
       <h2>Task List</h2>
-      <AddTask refetchTasks={refetch} /> {/* AddTask component with refetchTasks prop */}
+      <AddTask refetchTasks={refetch} /> {}
       <ul>
         {data.getTasks.map((task) => (
           <li key={task.id}>

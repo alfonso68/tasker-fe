@@ -20,7 +20,7 @@ const AddTask = ({ refetchTasks }) => {
 
   const [createTask] = useMutation(CREATE_TASK, {
     onCompleted: () => {
-      refetchTasks(); // Refetch tasks after mutation completes
+      refetchTasks();
       setTitle('');
       setDescription('');
       setDueDate('');

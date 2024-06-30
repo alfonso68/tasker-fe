@@ -1,4 +1,3 @@
-// src/LogoutButton.js
 import React from 'react';
 import { auth } from './firebase';
 import { signOut } from 'firebase/auth';
@@ -8,8 +7,6 @@ const LogoutButton = () => {
     try {
       await signOut(auth);
       alert('Logout successful');
-      // Opcional: Redireccionar al usuario a la página de inicio o login
-      // window.location.href = '/login';
     } catch (error) {
       alert(`Error: ${error.message}`);
     }
