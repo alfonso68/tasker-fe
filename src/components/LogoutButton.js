@@ -6,14 +6,14 @@ const LogoutButton = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      alert('Logout successful');
+      console.log('User logged out')
     } catch (error) {
-      alert(`Error: ${error.message}`);
+      console.log(error)
     }
   };
 
   return (
-    <button onClick={handleLogout}>Logout</button>
+    <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded float-right">Logout</button>
   );
 };
 

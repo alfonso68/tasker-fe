@@ -10,29 +10,30 @@ const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      alert('Login successful');
     } catch (error) {
-      alert(error.message);
+      console.log(error)
     }
-  };
+  };  
 
   return (
     <form onSubmit={handleLogin}>
-      <label>Email:</label>
+      <label className="px-8">Email:</label>
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        className="px-8"
         required
       />
-      <label>Password:</label>
+      <label className="px-8">Password:</label>
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        className="px-8"
         required
       />
-      <button type="submit">Login</button>
+      <button type="submit" className="px-6">Login</button>
     </form>
   );
 };

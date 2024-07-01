@@ -88,41 +88,51 @@ const TaskList = ({ isCompleted }) => {
   if (error) return <p>Error :( {error.message}</p>;
 
   return (
-    <div>
-      <h2>Task List</h2>
+    <div className="p-4 bg-white shadow rounded-lg">
+      <h2 className="text-xl font-semibold mb-4">New Task</h2>
       <AddTask refetchTasks={refetch} /> {}
-      <ul>
+      <ul className="space-y-4">
+      <br/>
+      <h2 className="text-xl font-semibold mb-4">Task List</h2>
         {data.getTasks.map((task) => (
-          <li key={task.id}>
+          <li key={task.id} className="p-4 bg-gray-50 rounded-lg shadow flex items-center justify-between">
             {editingTaskId === task.id ? (
-              <>
+              <div className="flex space-x-4">
                 <input
                   type="text"
                   value={editedTask.title}
                   onChange={(e) => setEditedTask({ ...editedTask, title: e.target.value })}
+                  className="border p-2 rounded"
                 />
                 <input
                   type="text"
                   value={editedTask.description}
                   onChange={(e) => setEditedTask({ ...editedTask, description: e.target.value })}
+                  className="border p-2 rounded"
                 />
                 <input
                   type="date"
                   value={editedTask.dueDate}
                   onChange={(e) => setEditedTask({ ...editedTask, dueDate: e.target.value })}
+                  className="border p-2 rounded"
                 />
-                <button onClick={() => handleUpdateClick(task.id)}>Update</button>
-                <button onClick={() => setEditingTaskId(null)}>Cancel</button>
-              </>
+                <button onClick={() => handleUpdateClick(task.id)} className="bg-blue-500 text-white px-4 py-2 rounded">Update</button>
+                <button onClick={() => setEditingTaskId(null)} className="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
+              </div>
             ) : (
-              <>
+              <div className="flex space-x-4 items-center">
                 <strong>{task.title}</strong>: {task.description} - {task.dueDate} - {task.isCompleted ? 'Completed' : 'Pending'}
-                <button onClick={() => handleEditClick(task)}>Edit</button>
-                <button onClick={() => handleDeleteClick(task.id)}>Delete</button>
-                <button onClick={() => handleStatusToggleClick(task)}>
+                <button onClick={() => handleEditClick(task)} className="bg-yellow-500 text-white px-4 py-2 rounded">Edit</button>
+                <button onClick={() => handleDeleteClick(task.id)} className="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
+                <button
+                  onClick={() => handleStatusToggleClick(task)}
+                  className={`px-4 py-2 rounded ${
+                    task.isCompleted ? 'bg-gray-500 text-white' : 'bg-green-500 text-white'
+                  }`}
+                >
                   {task.isCompleted ? 'Set Pending' : 'Set Complete'}
                 </button>
-              </>
+              </div>
             )}
           </li>
         ))}

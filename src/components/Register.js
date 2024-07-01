@@ -18,18 +18,20 @@ const Register = () => {
 
   return (
     <form onSubmit={handleRegister}>
-      <label>Email:</label>
+      <label className="px-8">Email:</label>
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        className="px-8"
         required
       />
-      <label>Password:</label>
+      <label className="px-8">Password:</label>
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        className="px-8"
         required
       />
       <button type="submit">Register</button>

@@ -21,18 +21,26 @@ const App = () => {
       {user ? (
         <ApolloProvider>
           <LogoutButton />
-          <div>
-            <h1>Task Manager</h1>
+          <div className="max-w-4xl mx-auto p-8">
+            <h1 className="text-3xl font-bold text-center mb-8">Task Manager</h1>
             <TaskList />
           </div>
         </ApolloProvider>
       ) : (
-          <>
-            <h2>Login</h2>
-            <Login />
-            <h2>Register</h2>
-            <Register />
-          </>
+        <div className="max-w-6xl mx-auto p-8">
+          <div className="p-4 bg-white shadow rounded-lg">
+          <ul className="space-y-4">
+            <li className="p-4 bg-gray-50 rounded-lg shadow flex items-center justify-between">
+              <h1 className="text-3xl font-bold text-center mb-8">Login</h1>
+              <Login />
+            </li>
+            <li className="p-4 bg-gray-50 rounded-lg shadow flex items-center justify-between">
+              <h1 className="text-3xl font-bold text-center mb-8">Register</h1>
+              <Register />
+            </li>
+          </ul>
+          </div>
+        </div>
       )}
     </div>
   );
