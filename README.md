@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# Radar Task Manager [FRONTEND]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Requrements
+- Docker: Version >= 26.1.1
+- Git: Version >= 2.45.1
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+**Frontend** repository for Task Manager App bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### `npm start`
+## Dev setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+# Clone repository
+$ git clone https://github.com/alfonso68/tasker-fe.git
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Change directory
+$ cd tasker-fe
 
-### `npm test`
+# Copy env file
+$ cp .env .env.local
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Firebase setup .env
 
-### `npm run build`
+```yaml
+# Replace #[PLACEHOLDERS]# in .env.local file
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+REACT_APP_FIREBASE_API_KEY=#[FIREBASE_API_KEY]#
+REACT_APP_FIREBASE_AUTH_DOMAIN=#[FIREBASE_AUTH_DOMAIN]#
+REACT_APP_FIREBASE_DATABASE_URL=#[FIREBASE_DATABASE_URL]#
+REACT_APP_FIREBASE_PROJECT_ID=#[FIREBASE_PROJECT_ID]#
+REACT_APP_FIREBASE_STORAGE_BUCKET=#[FIREBASE_STORAGE_BUCKET]#
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=#[FIREBASE_MESSAGING_SENDER_ID]#
+REACT_APP_FIREBASE_APP_ID=#[FIREBASE_APP_ID]#
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Build & Run
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+# Change to project root dir
+$ cd tasker-fe
 
-### `npm run eject`
+# Install libs & Build
+$ npm install
+$ npm run build
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Run on Docker
+$ docker-compose up --build
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Wait for message:
+...
+...
+...
+app-1  | webpack compiled successfully
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Access Login & Register
 
-## Learn More
+- Go to http://localhost:3001/
+- Register in Register form
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Stop & Shutdown containers
+```bash
+# Press Ctrl + c to stop container and then run below command:
+ 
+$ docker-compose down -v 
+```

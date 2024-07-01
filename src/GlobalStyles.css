@@ -1,0 +1,21 @@
+/* src/GlobalStyles.css */
+body {
+    @apply bg-gray-100 text-gray-900 font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-blue-600 font-bold;
+  }
+  
+  button {
+    @apply px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300;
+  }
+  
+  input, select, textarea {
+    @apply border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500;
+  }
+  
+  form {
+    @apply space-y-4;
+  }
+  
